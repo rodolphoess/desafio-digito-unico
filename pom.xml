@@ -47,6 +47,7 @@
 
     <dependencyManagement>
         <dependencies>
+
             <dependency>
                 <groupId>br.inter</groupId>
                 <artifactId>desafio-digito-unico-domain</artifactId>
@@ -127,6 +128,7 @@
                 <version>2.0.0</version>
                 <scope>test</scope>
             </dependency>
+
         </dependencies>
     </dependencyManagement>
 
