@@ -53,13 +53,18 @@
                 <version>${project.version}</version>
             </dependency>
             <dependency>
-                <groupId>br.ufrn.sigcompras</groupId>
+                <groupId>br.inter</groupId>
                 <artifactId>desafio-digito-unico-application</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
-                <groupId>br.ufrn.sigcompras</groupId>
+                <groupId>br.inter</groupId>
                 <artifactId>desafio-digito-unico-jpa-repository</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>br.inter</groupId>
+                <artifactId>desafio-digito-unico-web-mvc</artifactId>
                 <version>${project.version}</version>
             </dependency>
 
