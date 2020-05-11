@@ -25,8 +25,21 @@ public class DigitoUnico extends DomainEntity {
         this.valorDigitoUnico = digitoUnico(valorASerConcatenado, numeroDeConcatenacoes);
     }
 
+    public DigitoUnico(Long id, String valorASerConcatenado, int numeroDeConcatenacoes, int valorDigitoUnico) {
+        setId(id);
+
+        this.valorASerConcatenado = valorASerConcatenado;
+        this.numeroDeConcatenacoes = numeroDeConcatenacoes;
+        this.valorDigitoUnico = valorDigitoUnico;
+    }
+
     public static DigitoUnico calcularDigitoUnico(String valorASerConcatenado, int numeroDeConcatenacoes) {
         return new DigitoUnico(valorASerConcatenado, numeroDeConcatenacoes);
+    }
+
+    public static DigitoUnico recuperarDigitoUnicoCalculado(Long id, String valorASerConcatenado, int numeroDeConcatenacoes,
+                                                            int valorDigitoUnico) {
+        return new DigitoUnico(id, valorASerConcatenado, numeroDeConcatenacoes, valorDigitoUnico);
     }
 
     private int digitoUnico(String valor, int numeroDeConcatenacoes) {
