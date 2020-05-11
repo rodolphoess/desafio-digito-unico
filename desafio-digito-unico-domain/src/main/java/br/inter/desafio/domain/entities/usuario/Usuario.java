@@ -17,12 +17,11 @@ public class Usuario extends DomainEntity {
     private List<DigitoUnico> digitosUnicosCalculados;
 
     private Usuario(String nome, Email email) {
+        this.assertArgumentNotEmpty(nome, "É necessário informar um nome de usuário ao domínio.");
+        this.assertArgumentNotNull(email, "É necessário informar o e-mail do usuário ao domínio.");
+
         this.nome = nome;
         this.email = email;
-    }
-
-    private Usuario(DigitoUnico digitoUnicoCalculado) {
-        this.digitosUnicosCalculados.add(digitoUnicoCalculado);
     }
 
     private Usuario(Long id, String nome, Email email, List<DigitoUnico> digitosUnicosCalculados) {
@@ -41,10 +40,10 @@ public class Usuario extends DomainEntity {
         return new Usuario(id, nome, email, digitosUnicosCalculados);
     }
 
-    public static Usuario calcularDigitoUnicoParaUsuario(String valorASerConcatenado, int numeroDeConcatenacoes) {
+    public void calcularDigitoUnicoParaUsuario(String valorASerConcatenado, int numeroDeConcatenacoes) {
         DigitoUnico digitoUnico = DigitoUnico.calcularDigitoUnico(valorASerConcatenado, numeroDeConcatenacoes);
 
-        return new Usuario(digitoUnico);
+        this.digitosUnicosCalculados.add(digitoUnico);
     }
 
     public String getNome() {

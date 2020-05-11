@@ -17,8 +17,8 @@ public class DigitoUnico extends DomainEntity {
     private int valorDigitoUnico;
 
     private DigitoUnico(String valorASerConcatenado, int numeroDeConcatenacoes) {
-        this.assertArgumentNotEmpty(valorASerConcatenado, "É necessário informar o fator N para o domínio.");
-        this.assertArgumentNotZero(numeroDeConcatenacoes, "É necessário informar o fator K para o domínio.");
+        this.assertArgumentNotEmpty(valorASerConcatenado, "É necessário informar o fator N ao domínio.");
+        this.assertArgumentNotZero(numeroDeConcatenacoes, "É necessário informar o fator K ao domínio.");
 
         this.valorASerConcatenado = valorASerConcatenado;
         this.numeroDeConcatenacoes = numeroDeConcatenacoes;
