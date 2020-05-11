@@ -1,6 +1,6 @@
-package br.inter.desafio.commons.value;
+package br.inter.desafio.shared.value;
 
-import br.inter.desafio.commons.asserts.AssertionConcern;
+import br.inter.desafio.shared.asserts.AssertionConcern;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 

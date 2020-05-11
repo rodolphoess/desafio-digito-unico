@@ -1,4 +1,4 @@
-package br.inter.desafio.commons.asserts;
+package br.inter.desafio.shared.asserts;
 
 public class AssertionConcern {
 
