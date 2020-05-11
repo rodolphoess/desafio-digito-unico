@@ -11,43 +11,43 @@ import java.util.List;
 
 public class DigitoUnico extends DomainEntity {
 
-    private String primeiroFator;
-    private int segundoFator;
+    private String valorASerConcatenado;
+    private int numeroDeConcatenacoes;
 
     private int valorDigitoUnico;
 
-    private DigitoUnico(String primeiroFator, int segundoFator) {
-        this.assertArgumentNotEmpty(primeiroFator, "É necessário informar o fator N para o domínio.");
-        this.assertArgumentNotZero(segundoFator, "É necessário informar o fator K para o domínio.");
+    private DigitoUnico(String valorASerConcatenado, int numeroDeConcatenacoes) {
+        this.assertArgumentNotEmpty(valorASerConcatenado, "É necessário informar o fator N para o domínio.");
+        this.assertArgumentNotZero(numeroDeConcatenacoes, "É necessário informar o fator K para o domínio.");
 
-        this.primeiroFator = primeiroFator;
-        this.segundoFator = segundoFator;
-        this.valorDigitoUnico = digitoUnico(primeiroFator, segundoFator);
+        this.valorASerConcatenado = valorASerConcatenado;
+        this.numeroDeConcatenacoes = numeroDeConcatenacoes;
+        this.valorDigitoUnico = digitoUnico(valorASerConcatenado, numeroDeConcatenacoes);
     }
 
-    public static DigitoUnico calcularDigitoUnico(String primeiroFator, int segundoFator) {
-        return new DigitoUnico(primeiroFator, segundoFator);
+    public static DigitoUnico calcularDigitoUnico(String valorASerConcatenado, int numeroDeConcatenacoes) {
+        return new DigitoUnico(valorASerConcatenado, numeroDeConcatenacoes);
     }
 
-    private int digitoUnico(String primeiroFator, int segundoFator) {
+    private int digitoUnico(String valor, int numeroDeConcatenacoes) {
 
-        StringBuilder primeiroFatorConcatenado = StringOperations.concatenarPrimeiroFator(primeiroFator, segundoFator);
+        StringBuilder resultadoDaConcatenacao = StringOperations.concatenarString(valor, numeroDeConcatenacoes);
 
-        List<String> algarismosDoNumero = StringOperations.separarAlgarismosDeUmNumero(primeiroFatorConcatenado);
+        List<String> algarismosDoNumero = StringOperations.separarElementosDeUmaString(resultadoDaConcatenacao);
 
-        for (int i = 0; i < primeiroFatorConcatenado.length(); i++) {
+        for (int i = 0; i < resultadoDaConcatenacao.length(); i++) {
             valorDigitoUnico += Integer.parseInt(algarismosDoNumero.get(i));
         }
 
         return valorDigitoUnico;
     }
 
-    public String getPrimeiroFator() {
-        return primeiroFator;
+    public String getValorASerConcatenado() {
+        return valorASerConcatenado;
     }
 
-    public int getSegundoFator() {
-        return segundoFator;
+    public int getNumeroDeConcatenacoes() {
+        return numeroDeConcatenacoes;
     }
 
     public int getValorDigitoUnico() {
@@ -67,8 +67,9 @@ public class DigitoUnico extends DomainEntity {
         if (obj instanceof DigitoUnico) {
             DigitoUnico entity = (DigitoUnico) obj;
 
-            return new EqualsBuilder().append(getId(), entity.getId())
-                                      .isEquals();
+            return new EqualsBuilder()
+                    .append(getId(), entity.getId())
+                    .isEquals();
         }
 
         return false;

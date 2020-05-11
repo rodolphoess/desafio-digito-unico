@@ -8,24 +8,24 @@ public class StringOperations {
 
     private StringOperations() { }
 
-    public static List<String> separarAlgarismosDeUmNumero(StringBuilder primeiroFatorConcatenado) {
-
-        List<String> algarismosUnicos = newArrayList();
-        for (int i = primeiroFatorConcatenado.length() - 1; i >= 0; i--) {
-            algarismosUnicos.add(primeiroFatorConcatenado.substring(i, i + 1));
-        }
-
-        return algarismosUnicos;
-    }
-
-    public static StringBuilder concatenarPrimeiroFator(String primeiroFator, int segundoFator) {
+    public static StringBuilder concatenarString(String stringASerConcatenada, int fatorDeConcatenacao) {
 
         StringBuilder primeiroFatorConcatenado = new StringBuilder();
-        for (int i = 0; i < segundoFator; i++) {
-            primeiroFatorConcatenado.append(primeiroFator);
+        for (int iterator = 0; iterator < fatorDeConcatenacao; iterator++) {
+            primeiroFatorConcatenado.append(stringASerConcatenada);
         }
 
         return primeiroFatorConcatenado;
+    }
+
+    public static List<String> separarElementosDeUmaString(StringBuilder stringASerSeparada) {
+
+        List<String> elementosUnicos = newArrayList();
+        for (int iterator = stringASerSeparada.length() - 1; iterator >= 0; iterator--) {
+            elementosUnicos.add(stringASerSeparada.substring(iterator, iterator + 1));
+        }
+
+        return elementosUnicos;
     }
 
 }
