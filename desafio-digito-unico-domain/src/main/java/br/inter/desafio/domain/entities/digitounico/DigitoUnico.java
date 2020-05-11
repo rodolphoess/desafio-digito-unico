@@ -22,14 +22,11 @@ public class DigitoUnico extends DomainEntity {
 
         this.primeiroFator = primeiroFator;
         this.segundoFator = segundoFator;
+        this.valorDigitoUnico = digitoUnico(primeiroFator, segundoFator);
     }
 
     public static DigitoUnico calcularDigitoUnico(String primeiroFator, int segundoFator) {
-        DigitoUnico instanciaDigitoUnico = new DigitoUnico(primeiroFator, segundoFator);
-
-        instanciaDigitoUnico.digitoUnico(primeiroFator, segundoFator);
-
-        return instanciaDigitoUnico;
+        return new DigitoUnico(primeiroFator, segundoFator);
     }
 
     private int digitoUnico(String primeiroFator, int segundoFator) {
