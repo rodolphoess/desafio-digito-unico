@@ -35,13 +35,13 @@ public class AssertionConcern {
     }
 
     protected void assertArgumentTrue(boolean aBoolean, String aMessage) {
-        if (!aBoolean) {
+        if (aBoolean) {
             throw new IllegalArgumentException(aMessage);
         }
     }
 
     protected void assertArgumentFalse(boolean aBoolean, String aMessage) {
-        if (aBoolean) {
+        if (!aBoolean) {
             throw new IllegalArgumentException(aMessage);
         }
     }
