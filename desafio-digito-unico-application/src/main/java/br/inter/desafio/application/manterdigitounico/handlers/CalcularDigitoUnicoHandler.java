@@ -16,7 +16,7 @@ public class CalcularDigitoUnicoHandler {
         this.digitoUnicoRepository = digitoUnicoRepository;
     }
 
-    public void handle(CalcularDigitoUnicoCommand command) {
+    public int handle(CalcularDigitoUnicoCommand command) {
         requireNonNull(command);
 
         DigitoUnico digitoUnico = DigitoUnico.calcularDigitoUnico(command.getValorASerConcatenado(),
@@ -24,6 +24,8 @@ public class CalcularDigitoUnicoHandler {
         );
 
         this.digitoUnicoRepository.salvar(digitoUnico);
+
+        return digitoUnico.getValorDigitoUnico();
     }
 
 }

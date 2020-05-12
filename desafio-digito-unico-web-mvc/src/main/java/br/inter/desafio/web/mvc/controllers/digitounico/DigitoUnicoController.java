@@ -33,9 +33,7 @@ public class DigitoUnicoController {
                                                                        .fatorDeConcatenacao(form.getFatorDeConcatenacao())
                                                                        .build();
 
-        this.calcularDigitoUnicoHandler.handle(command);
-
-        return ResponseEntity.ok().build();
+        return ResponseEntity.ok("Valor dígito único: " + this.calcularDigitoUnicoHandler.handle(command));
     }
 
 }
