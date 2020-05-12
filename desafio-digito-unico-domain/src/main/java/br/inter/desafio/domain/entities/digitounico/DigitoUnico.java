@@ -23,6 +23,7 @@ public class DigitoUnico extends DomainEntity {
 
         this.assertArgumentTrue(numeroDeConcatenacoes <= 0, "É necessário informar um fator de concatenação maior do que 0 " +
                 "e menor do que 10^1000001. Por favor, informe um fator válido.");
+
         this.assertArgumentTrue(verificarQueUmNumeroMaiorDoQueLongMinEhNegativo(valorASerConcatenado),
                 "É necessário informar um valor a ser concatenado maior do que zero. " +
                         "Por favor, informe um valor válido.");
