@@ -1,7 +1,11 @@
 package br.inter.desafio.web.mvc.controllers.usuario.form;
 
-public class CadastrarUsuarioForm {
+import lombok.Getter;
+import lombok.Setter;
 
+@Getter
+@Setter
+public class CadastrarUsuarioForm {
 
 
 }

@@ -24,11 +24,11 @@ public class DigitoUnico extends DomainEntity {
         this.assertArgumentTrue(numeroDeConcatenacoes <= 0, "É necessário informar um fator de concatenação maior do que 0 " +
                 "e menor do que 10^1000001. Por favor, informe um fator válido.");
 
-        this.assertArgumentTrue(verificarQueUmNumeroMaiorDoQueLongMinEhNegativo(valorASerConcatenado),
+        this.assertArgumentTrue(certificarQueUmNumeroMaiorDoQueLongMinEhNegativo(valorASerConcatenado),
                 "É necessário informar um valor a ser concatenado maior do que zero. " +
                         "Por favor, informe um valor válido.");
 
-        if (verificarSeValorASerConcatenadoEhMenorDoQueLongMax(valorASerConcatenado) && !verificarQueUmNumeroMaiorDoQueLongMinEhNegativo(valorASerConcatenado)) {
+        if (verificarSeValorASerConcatenadoEhMenorDoQueLongMax(valorASerConcatenado) && !certificarQueUmNumeroMaiorDoQueLongMinEhNegativo(valorASerConcatenado)) {
             this.assertArgumentTrue(Long.parseLong(valorASerConcatenado) <= 0L, "É necessário informar um valor a ser concatenado maior do que zero. " +
                     "Por favor, informe um valor válido.");
         }
@@ -68,7 +68,7 @@ public class DigitoUnico extends DomainEntity {
         return valorDigitoUnico;
     }
 
-    private boolean verificarQueUmNumeroMaiorDoQueLongMinEhNegativo(String valorASerConcatenado) {
+    private boolean certificarQueUmNumeroMaiorDoQueLongMinEhNegativo(String valorASerConcatenado) {
         BigInteger valorASerConcatenadoInteger = new BigInteger(valorASerConcatenado);
 
         return valorASerConcatenadoInteger.compareTo(BigInteger.ZERO) < 1;
