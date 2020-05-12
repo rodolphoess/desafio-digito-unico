@@ -18,19 +18,16 @@ public class DigitoUnico extends DomainEntity {
     private int valorDigitoUnico;
 
     private DigitoUnico(String valorASerConcatenado, int numeroDeConcatenacoes) {
-        this.assertArgumentNotEmpty(valorASerConcatenado, "É necessário informar o fator N ao domínio.");
-        this.assertArgumentNotZero(numeroDeConcatenacoes, "É necessário informar o fator K ao domínio.");
-
-        this.assertArgumentTrue(numeroDeConcatenacoes <= 0, "É necessário informar um fator de concatenação maior do que 0 " +
+        this.assertArgumentTrue(numeroDeConcatenacoes < 0, "É necessário informar um fator de concatenação maior do que 0 " +
                 "e menor do que 10^1000001. Por favor, informe um fator válido.");
 
         this.assertArgumentTrue(certificarQueUmNumeroMaiorDoQueLongMinEhNegativo(valorASerConcatenado),
-                "É necessário informar um valor a ser concatenado maior do que zero. " +
+                "É necessário informar um valor para cálculo do dígito único maior do que zero. " +
                         "Por favor, informe um valor válido.");
 
         if (verificarSeValorASerConcatenadoEhMenorDoQueLongMax(valorASerConcatenado) && !certificarQueUmNumeroMaiorDoQueLongMinEhNegativo(valorASerConcatenado)) {
-            this.assertArgumentTrue(Long.parseLong(valorASerConcatenado) <= 0L, "É necessário informar um valor a ser concatenado maior do que zero. " +
-                    "Por favor, informe um valor válido.");
+            this.assertArgumentTrue(Long.parseLong(valorASerConcatenado) <= 0L, "É necessário informar um valor para cálculo do dígito único " +
+                    "maior do que zero. Por favor, informe um valor válido.");
         }
 
         this.valorASerConcatenado = valorASerConcatenado;
