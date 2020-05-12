@@ -59,24 +59,24 @@ public class DigitoUnicoTest {
     }
 
     @Test
-    public void deve_lancar_uma_excecao_ao_enviar_o_valor_a_ser_concatenado_vazio() {
+    public void deve_lancar_uma_excecao_ao_enviar_o_valor_a_ser_concatenado_menor_do_que_zero() {
         expectedException.expect(IllegalArgumentException.class);
 
-        DigitoUnico.calcularDigitoUnico("", 3);
+        DigitoUnico.calcularDigitoUnico("-1", NUMERO_CONCATENACOES);
     }
 
     @Test
-    public void deve_lancar_uma_excecao_ao_enviar_o_valor_a_ser_concatenado_nulo() {
+    public void deve_lancar_uma_excecao_ao_enviar_o_valor_a_ser_concatenado_menor_do_que_zero_e_maior_do_que_o_limite_inferior_de_long() {
         expectedException.expect(IllegalArgumentException.class);
 
-        DigitoUnico.calcularDigitoUnico(null, 3);
+        DigitoUnico.calcularDigitoUnico("-100000000000000000000000000000000000000", 2);
     }
 
     @Test
-    public void deve_lancar_uma_excecao_ao_enviar_o_numero_de_concatenacoes_igual_a_zero() {
+    public void deve_lancar_uma_excecao_ao_enviar_o_numero_de_concatenacoes_menor_do_que_zero() {
         expectedException.expect(IllegalArgumentException.class);
 
-        DigitoUnico.calcularDigitoUnico(VALOR_A_SER_CONCATENADO, 0);
+        DigitoUnico.calcularDigitoUnico(VALOR_A_SER_CONCATENADO, -1);
     }
 
     @Test
