@@ -11,7 +11,7 @@ public class StringOperations {
     public static StringBuilder concatenarString(String stringASerConcatenada, int fatorDeConcatenacao) {
 
         StringBuilder primeiroFatorConcatenado = new StringBuilder();
-        for (int iterator = 0; iterator < fatorDeConcatenacao; iterator++) {
+        for (int iterador = 0; iterador < fatorDeConcatenacao; iterador++) {
             primeiroFatorConcatenado.append(stringASerConcatenada);
         }
 
@@ -21,8 +21,10 @@ public class StringOperations {
     public static List<String> separarElementosDeUmaString(StringBuilder stringASerSeparada) {
 
         List<String> elementosUnicos = newArrayList();
-        for (int iterator = stringASerSeparada.length() - 1; iterator >= 0; iterator--) {
-            elementosUnicos.add(stringASerSeparada.substring(iterator, iterator + 1));
+        int ultimoElementoDaLista = stringASerSeparada.length() - 1;
+
+        for (int iterador = ultimoElementoDaLista; iterador >= 0; iterador--) {
+            elementosUnicos.add(stringASerSeparada.substring(iterador, iterador + 1));
         }
 
         return elementosUnicos;

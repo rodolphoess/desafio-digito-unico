@@ -48,8 +48,8 @@ public class DigitoUnico extends DomainEntity {
 
         List<String> algarismosDoNumero = StringOperations.separarElementosDeUmaString(resultadoDaConcatenacao);
 
-        for (int i = 0; i < resultadoDaConcatenacao.length(); i++) {
-            valorDigitoUnico += Integer.parseInt(algarismosDoNumero.get(i));
+        for (int iterador = 0; iterador < resultadoDaConcatenacao.length(); iterador++) {
+            valorDigitoUnico += Integer.parseInt(algarismosDoNumero.get(iterador));
         }
 
         return valorDigitoUnico;

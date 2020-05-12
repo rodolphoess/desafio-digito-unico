@@ -10,11 +10,13 @@ import org.apache.commons.lang3.builder.ToStringStyle;
 
 import java.util.List;
 
+import static com.google.common.collect.Lists.newArrayList;
+
 public class Usuario extends DomainEntity {
 
     private String nome;
     private Email email;
-    private List<DigitoUnico> digitosUnicosCalculados;
+    private List<DigitoUnico> digitosUnicosCalculados = newArrayList();
 
     private Usuario(String nome, Email email) {
         this.assertArgumentNotEmpty(nome, "É necessário informar um nome de usuário ao domínio.");
@@ -32,11 +34,11 @@ public class Usuario extends DomainEntity {
         this.digitosUnicosCalculados = digitosUnicosCalculados;
     }
 
-    public static Usuario criarUsuario(String nome, Email email) {
+    public static Usuario criar(String nome, Email email) {
         return new Usuario(nome, email);
     }
 
-    public static Usuario recuperarUsuario(Long id, String nome, Email email, List<DigitoUnico> digitosUnicosCalculados) {
+    public static Usuario recuperar(Long id, String nome, Email email, List<DigitoUnico> digitosUnicosCalculados) {
         return new Usuario(id, nome, email, digitosUnicosCalculados);
     }
 
