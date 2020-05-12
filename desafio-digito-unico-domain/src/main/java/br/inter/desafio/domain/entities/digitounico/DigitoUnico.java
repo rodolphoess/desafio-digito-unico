@@ -7,6 +7,7 @@ import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 
+import java.math.BigInteger;
 import java.util.List;
 
 public class DigitoUnico extends DomainEntity {
@@ -19,6 +20,17 @@ public class DigitoUnico extends DomainEntity {
     private DigitoUnico(String valorASerConcatenado, int numeroDeConcatenacoes) {
         this.assertArgumentNotEmpty(valorASerConcatenado, "É necessário informar o fator N ao domínio.");
         this.assertArgumentNotZero(numeroDeConcatenacoes, "É necessário informar o fator K ao domínio.");
+
+        this.assertArgumentTrue(numeroDeConcatenacoes <= 0, "É necessário informar um fator de concatenação maior do que 0 " +
+                "e menor do que 10^1000001. Por favor, informe um fator válido.");
+        this.assertArgumentTrue(verificarQueUmNumeroMaiorDoQueLongMinEhNegativo(valorASerConcatenado),
+                "É necessário informar um valor a ser concatenado maior do que zero. " +
+                        "Por favor, informe um valor válido.");
+
+        if (verificarSeValorASerConcatenadoEhMenorDoQueLongMax(valorASerConcatenado) && !verificarQueUmNumeroMaiorDoQueLongMinEhNegativo(valorASerConcatenado)) {
+            this.assertArgumentTrue(Long.parseLong(valorASerConcatenado) <= 0L, "É necessário informar um valor a ser concatenado maior do que zero. " +
+                    "Por favor, informe um valor válido.");
+        }
 
         this.valorASerConcatenado = valorASerConcatenado;
         this.numeroDeConcatenacoes = numeroDeConcatenacoes;
@@ -53,6 +65,18 @@ public class DigitoUnico extends DomainEntity {
         }
 
         return valorDigitoUnico;
+    }
+
+    private boolean verificarQueUmNumeroMaiorDoQueLongMinEhNegativo(String valorASerConcatenado) {
+        BigInteger valorASerConcatenadoInteger = new BigInteger(valorASerConcatenado);
+
+        return valorASerConcatenadoInteger.compareTo(BigInteger.ZERO) < 1;
+    }
+
+    private boolean verificarSeValorASerConcatenadoEhMenorDoQueLongMax(String valorASerConcatenado) {
+        BigInteger valorASerConcatenadoInteger = new BigInteger(valorASerConcatenado);
+
+        return valorASerConcatenadoInteger.compareTo(BigInteger.valueOf(Long.MAX_VALUE)) < 1;
     }
 
     public String getValorASerConcatenado() {

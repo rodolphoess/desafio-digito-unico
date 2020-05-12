@@ -1,13 +1,13 @@
 {
 	"info": {
-		"_postman_id": "d7a7b39e-4d76-4922-a755-a6d782404b1a",
+		"_postman_id": "371fbc02-2ce4-437c-8968-b5bab7f0ecbe",
 		"name": "Digito Unico - API",
 		"description": "Testes para a API de cálculo de dígito único.",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
 		{
-			"name": "Calcular Dígito Único",
+			"name": "Calcular Dígito Único - 9875, 4",
 			"protocolProfileBehavior": {
 				"disabledSystemHeaders": {
 					"content-type": true
@@ -25,6 +25,316 @@
 				"body": {
 					"mode": "raw",
 					"raw": "{\n\t\"valorASerConcatenado\": \"9875\",\n\t\"fatorDeConcatenacao\": 4\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/digito-unico/calcular",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"digito-unico",
+						"calcular"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Calcular Dígito Único - 1, 1",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"content-type": true
+				}
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json; charset=utf-8",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"valorASerConcatenado\": \"1\",\n\t\"fatorDeConcatenacao\": 1\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/digito-unico/calcular",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"digito-unico",
+						"calcular"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Calcular Dígito Único - 10, 3",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"content-type": true
+				}
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json; charset=utf-8",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"valorASerConcatenado\": \"10\",\n\t\"fatorDeConcatenacao\": 3\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/digito-unico/calcular",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"digito-unico",
+						"calcular"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Calcular Dígito Único - 10^37, 100000",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json;",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"valorASerConcatenado\": \"100000000000000000000000000000000000000\",\n\t\"fatorDeConcatenacao\": 100000\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/digito-unico/calcular",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"digito-unico",
+						"calcular"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Calcular Dígito Único - 0, 3",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"valorASerConcatenado\": \"0\",\n\t\"fatorDeConcatenacao\": 3\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/digito-unico/calcular",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"digito-unico",
+						"calcular"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Calcular Dígito Único - empty, 3",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"valorASerConcatenado\": \"\",\n\t\"fatorDeConcatenacao\": 3\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/digito-unico/calcular",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"digito-unico",
+						"calcular"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Calcular Dígito Único - null, 3",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"valorASerConcatenado\": null,\n\t\"fatorDeConcatenacao\": 3\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/digito-unico/calcular",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"digito-unico",
+						"calcular"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Calcular Dígito Único - 9875, 0",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"valorASerConcatenado\": \"9875\",\n\t\"fatorDeConcatenacao\": 0\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/digito-unico/calcular",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"digito-unico",
+						"calcular"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Calcular Dígito Único - -1, 3",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"valorASerConcatenado\": \"-1\",\n\t\"fatorDeConcatenacao\": 3\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/digito-unico/calcular",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"digito-unico",
+						"calcular"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Calcular Dígito Único - 9875, -1",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"valorASerConcatenado\": \"9875\",\n\t\"fatorDeConcatenacao\": -1\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/digito-unico/calcular",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"digito-unico",
+						"calcular"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Calcular Dígito Único - -10^37, 100000",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json;"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"valorASerConcatenado\": \"-100000000000000000000000000000000000000\",\n\t\"fatorDeConcatenacao\": 100000\n}"
 				},
 				"url": {
 					"raw": "http://localhost:8080/digito-unico/calcular",
