@@ -80,6 +80,27 @@ public class DigitoUnicoTest {
     }
 
     @Test
+    public void deve_lancar_uma_excecao_ao_enviar_o_valor_a_ser_concatenado_vazio() {
+        expectedException.expect(IllegalArgumentException.class);
+
+        DigitoUnico.calcularDigitoUnico("", 3);
+    }
+
+    @Test
+    public void deve_lancar_uma_excecao_ao_enviar_o_valor_a_ser_concatenado_nulo() {
+        expectedException.expect(IllegalArgumentException.class);
+
+        DigitoUnico.calcularDigitoUnico(null, 3);
+    }
+
+    @Test
+    public void deve_lancar_uma_excecao_ao_enviar_o_numero_de_concatenacoes_igual_a_zero() {
+        expectedException.expect(IllegalArgumentException.class);
+
+        DigitoUnico.calcularDigitoUnico(VALOR_A_SER_CONCATENADO, 0);
+    }
+
+    @Test
     public void deve_garantir_que_um_objeto_com_digito_unico_calculado_retorne_seu_estado_corretamente_enquanto_string() {
         DigitoUnico digitoUnico = DigitoUnico.recuperarDigitoUnicoCalculado(1L, VALOR_A_SER_CONCATENADO, NUMERO_CONCATENACOES,
                                                                         VALOR_DIGITO_UNICO);

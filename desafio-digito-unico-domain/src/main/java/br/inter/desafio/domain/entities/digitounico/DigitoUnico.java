@@ -18,6 +18,12 @@ public class DigitoUnico extends DomainEntity {
     private int valorDigitoUnico;
 
     private DigitoUnico(String valorASerConcatenado, int numeroDeConcatenacoes) {
+        this.assertArgumentNotEmpty(valorASerConcatenado, "É necessário informar um valor para cálculo do dígito único. " +
+                "Por favor, informe um valor válido.");
+
+        this.assertArgumentNotZero(numeroDeConcatenacoes, "É necessário informar um fator de concatenação maior do que 0 " +
+                "e menor do que 10^1000001. Por favor, informe um fator válido.");
+
         this.assertArgumentTrue(numeroDeConcatenacoes < 0, "É necessário informar um fator de concatenação maior do que 0 " +
                 "e menor do que 10^1000001. Por favor, informe um fator válido.");
 
@@ -58,11 +64,12 @@ public class DigitoUnico extends DomainEntity {
 
         List<String> algarismosDoNumero = StringOperations.separarElementosDeUmaString(resultadoDaConcatenacao);
 
+        int calculoDigitoUnico = 0;
         for (int iterador = 0; iterador < resultadoDaConcatenacao.length(); iterador++) {
-            valorDigitoUnico += Integer.parseInt(algarismosDoNumero.get(iterador));
+            calculoDigitoUnico += Integer.parseInt(algarismosDoNumero.get(iterador));
         }
 
-        return valorDigitoUnico;
+        return calculoDigitoUnico;
     }
 
     private boolean certificarQueUmNumeroMaiorDoQueLongMinEhNegativo(String valorASerConcatenado) {

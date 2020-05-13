@@ -30,7 +30,7 @@ public class DigitoUnicoController {
 
         CalcularDigitoUnicoCommand command = CalcularDigitoUnicoCommand.builder()
                                                                        .valorASerConcatenado(form.getValorASerConcatenado())
-                                                                       .numeroDeConcatenacao(form.getFatorDeConcatenacao())
+                                                                       .numeroDeConcatenacoes(form.getFatorDeConcatenacao())
                                                                        .build();
 
         return ResponseEntity.ok("Valor dígito único: " + this.calcularDigitoUnicoHandler.handle(command));

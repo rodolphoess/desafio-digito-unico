@@ -20,7 +20,7 @@ public class CalcularDigitoUnicoHandler {
         requireNonNull(command);
 
         DigitoUnico digitoUnico = DigitoUnico.calcularDigitoUnico(command.getValorASerConcatenado(),
-                                                                  command.getNumeroDeConcatenacao()
+                                                                  command.getNumeroDeConcatenacoes()
         );
 
         this.digitoUnicoRepository.salvar(digitoUnico);
