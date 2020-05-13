@@ -5,6 +5,8 @@ import br.inter.desafio.domain.entities.usuario.UsuarioRepository;
 import br.inter.desafio.domain.readmodel.usuario.UsuarioDTO;
 import org.springframework.stereotype.Service;
 
+import static java.util.Objects.requireNonNull;
+
 @Service
 public class RecuperarUsuarioHandler {
 
@@ -15,6 +17,8 @@ public class RecuperarUsuarioHandler {
     }
 
     public UsuarioDTO handle(RecuperarUsuarioPorIdQuery query) {
+        requireNonNull(query);
+
         return usuarioRepository.recuperar(query.getIdUsuario());
     }
 

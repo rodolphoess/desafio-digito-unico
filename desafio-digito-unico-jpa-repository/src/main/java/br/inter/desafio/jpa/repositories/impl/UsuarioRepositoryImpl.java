@@ -2,7 +2,9 @@ package br.inter.desafio.jpa.repositories.impl;
 
 import br.inter.desafio.domain.entities.digitounico.DigitoUnico;
 import br.inter.desafio.domain.entities.usuario.Usuario;
+import br.inter.desafio.domain.entities.usuario.UsuarioNaoEncontradoException;
 import br.inter.desafio.domain.entities.usuario.UsuarioRepository;
+import br.inter.desafio.domain.readmodel.digitounico.DigitoUnicoDTO;
 import br.inter.desafio.domain.readmodel.usuario.UsuarioDTO;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Repository;
@@ -30,7 +32,31 @@ public class UsuarioRepositoryImpl implements UsuarioRepository {
 
         Usuario usuario = usuarios.get(idUsuario);
 
+        if (usuario == null) {
+            throw new UsuarioNaoEncontradoException();
+        }
+
         return usuarioDominioParaDto(usuario, idUsuario);
+    }
+
+    @Override
+    public void deletar(Integer idUsuario) {
+
+    }
+
+    @Override
+    public void alterar(Integer idUsuario, String nome, String email) {
+
+    }
+
+    @Override
+    public void calcularDigitoUnicoParaUsuario(Integer idUsuario, String valorASerConcatenado, int numeroDeConcatenacoes) {
+
+    }
+
+    @Override
+    public DigitoUnicoDTO recuperarCalculosDeDigitoUnicoDeUmUsuario(Integer idUsuario) {
+        return null;
     }
 
     private UsuarioDTO usuarioDominioParaDto(Usuario usuario, Integer idUsuario) {
