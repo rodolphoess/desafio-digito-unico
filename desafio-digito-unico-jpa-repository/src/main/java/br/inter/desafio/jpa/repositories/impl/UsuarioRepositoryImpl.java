@@ -23,36 +23,26 @@ public class UsuarioRepositoryImpl implements UsuarioRepository {
 
     @Override
     public void salvar(Usuario usuario) {
-
         usuarios.put(usuarios.size() + 1, usuario);
     }
 
     @Override
     public UsuarioDTO listar(Integer idUsuario) {
+        Usuario usuario = checarSeHaUsuarioCadastradoComOIdInformado(idUsuario);
 
-        Usuario usuario = usuarios.get(idUsuario);
-
-        lancarBloqueioSeNaoHouverUsuarioCadastrado(usuario);
-
-        return usuarioDominioParaDto(usuario, idUsuario);
+        return usuarioDominioParaDTO(usuario, idUsuario);
     }
 
     @Override
     public void deletar(Integer idUsuario) {
-
-        Usuario usuario = usuarios.get(idUsuario);
-
-        lancarBloqueioSeNaoHouverUsuarioCadastrado(usuario);
+        checarSeHaUsuarioCadastradoComOIdInformado(idUsuario);
 
         usuarios.remove(idUsuario);
     }
 
     @Override
     public void alterar(Integer idUsuario, String nome, String email) {
-
-        Usuario usuario = usuarios.get(idUsuario);
-
-        lancarBloqueioSeNaoHouverUsuarioCadastrado(usuario);
+        Usuario usuario = checarSeHaUsuarioCadastradoComOIdInformado(idUsuario);
 
         Usuario novoUsuario = Usuario.criar(nome, new Email(email));
 
@@ -61,10 +51,7 @@ public class UsuarioRepositoryImpl implements UsuarioRepository {
 
     @Override
     public void calcularDigitoUnicoParaUsuario(Integer idUsuario, String valorASerConcatenado, int numeroDeConcatenacoes) {
-
-        Usuario usuario = usuarios.get(idUsuario);
-
-        lancarBloqueioSeNaoHouverUsuarioCadastrado(usuario);
+        Usuario usuario = checarSeHaUsuarioCadastradoComOIdInformado(idUsuario);
 
         usuario.calcularDigitoUnicoParaUsuario(valorASerConcatenado, numeroDeConcatenacoes);
 
@@ -73,14 +60,19 @@ public class UsuarioRepositoryImpl implements UsuarioRepository {
 
     @Override
     public List<UsuarioDTO.DigitoUnico> recuperarCalculosDeDigitoUnicoDeUmUsuario(Integer idUsuario) {
-
-        Usuario usuario = usuarios.get(idUsuario);
-
-        lancarBloqueioSeNaoHouverUsuarioCadastrado(usuario);
+        Usuario usuario = checarSeHaUsuarioCadastradoComOIdInformado(idUsuario);
 
         return usuario.getDigitosUnicosCalculados().stream()
                                                    .map(this::instanciarCalculoDigitoUnico)
                                                    .collect(toList());
+    }
+
+    private Usuario checarSeHaUsuarioCadastradoComOIdInformado(Integer idUsuario) {
+        Usuario usuario = usuarios.get(idUsuario);
+
+        lancarBloqueioSeNaoHouverUsuarioCadastrado(usuario);
+
+        return usuario;
     }
 
     private void lancarBloqueioSeNaoHouverUsuarioCadastrado(Usuario usuario) {
@@ -89,7 +81,7 @@ public class UsuarioRepositoryImpl implements UsuarioRepository {
         }
     }
 
-    private UsuarioDTO usuarioDominioParaDto(Usuario usuario, Integer idUsuario) {
+    private UsuarioDTO usuarioDominioParaDTO(Usuario usuario, Integer idUsuario) {
         return new UsuarioDTO(idUsuario,
                               usuario.getNome(),
                               usuario.getEmail().getEmailFornecido(),
