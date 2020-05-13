@@ -19,7 +19,7 @@ public class ListarUsuarioHandler {
     public UsuarioDTO handle(ListarUsuarioPorIdQuery query) {
         requireNonNull(query);
 
-        return usuarioRepository.listar(query.getIdUsuario());
+        return usuarioRepository.listarPorId(query.getIdUsuario());
     }
 
 }

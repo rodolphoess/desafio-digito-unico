@@ -8,7 +8,7 @@ public interface UsuarioRepository {
 
     void salvar(Usuario usuario);
 
-    UsuarioDTO listar(Integer idUsuario);
+    UsuarioDTO listarPorId(Integer idUsuario);
 
     List<UsuarioDTO> listarTodos();
 

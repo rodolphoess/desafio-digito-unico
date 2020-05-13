@@ -19,17 +19,20 @@ public class UsuarioController {
 
     private final CadastrarUsuarioHandler cadastrarUsuarioHandler;
     private final ListarUsuarioHandler listarUsuarioHandler;
+    private final ListarTodosUsuariosHandler listarTodosUsuariosHandler;
     private final DeletarUsuarioHandler deletarUsuarioHandler;
     private final AlterarUsuarioHandler alterarUsuarioHandler;
     private final CalcularDigitoUnicoParaUsuarioHandler calcularDigitoUnicoParaUsuarioHandler;
 
     public UsuarioController(CadastrarUsuarioHandler cadastrarUsuarioHandler,
                              ListarUsuarioHandler listarUsuarioHandler,
+                             ListarTodosUsuariosHandler listarTodosUsuariosHandler,
                              DeletarUsuarioHandler deletarUsuarioHandler,
                              AlterarUsuarioHandler alterarUsuarioHandler,
                              CalcularDigitoUnicoParaUsuarioHandler calcularDigitoUnicoParaUsuarioHandler) {
         this.cadastrarUsuarioHandler = cadastrarUsuarioHandler;
         this.listarUsuarioHandler = listarUsuarioHandler;
+        this.listarTodosUsuariosHandler = listarTodosUsuariosHandler;
         this.deletarUsuarioHandler = deletarUsuarioHandler;
         this.alterarUsuarioHandler = alterarUsuarioHandler;
         this.calcularDigitoUnicoParaUsuarioHandler = calcularDigitoUnicoParaUsuarioHandler;
@@ -56,6 +59,11 @@ public class UsuarioController {
                                                                      .build();
 
         return ResponseEntity.ok(this.listarUsuarioHandler.handle(query));
+    }
+
+    @GetMapping("/listar-todos")
+    public ResponseEntity listarTodos() {
+        return ResponseEntity.ok(this.listarTodosUsuariosHandler.handle());
     }
 
     @DeleteMapping(value = "/deletar", params = {"id"})

@@ -30,7 +30,7 @@ public class UsuarioRepositoryImpl implements UsuarioRepository {
     }
 
     @Override
-    public UsuarioDTO listar(Integer idUsuario) {
+    public UsuarioDTO listarPorId(Integer idUsuario) {
         Usuario usuario = checarSeHaUsuarioCadastradoComOIdInformado(idUsuario);
 
         return usuarioDominioParaDTO(usuario);
@@ -75,7 +75,7 @@ public class UsuarioRepositoryImpl implements UsuarioRepository {
         Usuario usuario = checarSeHaUsuarioCadastradoComOIdInformado(idUsuario);
 
         return usuario.getDigitosUnicosCalculados().stream()
-                                                   .map(this::instanciarCalculoDigitoUnico)
+                                                   .map(this::instanciarDigitoUnicoUsuario)
                                                    .collect(toList());
     }
 
@@ -97,17 +97,17 @@ public class UsuarioRepositoryImpl implements UsuarioRepository {
         return new UsuarioDTO(usuario.getId(),
                               usuario.getNome(),
                               usuario.getEmail().getEmailFornecido(),
-                              instanciarCalculosDigitosUnicos(usuario.getDigitosUnicosCalculados())
+                              instanciarDigitosUnicosUsuario(usuario.getDigitosUnicosCalculados())
         );
     }
 
-    private List<UsuarioDTO.DigitoUnico> instanciarCalculosDigitosUnicos(List<DigitoUnico> digitosUnicosCalculados) {
+    private List<UsuarioDTO.DigitoUnico> instanciarDigitosUnicosUsuario(List<DigitoUnico> digitosUnicosCalculados) {
         return digitosUnicosCalculados.stream()
-                                      .map(this::instanciarCalculoDigitoUnico)
+                                      .map(this::instanciarDigitoUnicoUsuario)
                                       .collect(toList());
     }
 
-    private UsuarioDTO.DigitoUnico instanciarCalculoDigitoUnico(DigitoUnico digitoUnico) {
+    private UsuarioDTO.DigitoUnico instanciarDigitoUnicoUsuario(DigitoUnico digitoUnico) {
         return new UsuarioDTO.DigitoUnico(digitoUnico.getValorASerConcatenado(),
                                           digitoUnico.getNumeroDeConcatenacoes(),
                                           digitoUnico.getValorDigitoUnico()
