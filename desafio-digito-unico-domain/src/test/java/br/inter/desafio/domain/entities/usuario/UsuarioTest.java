@@ -40,7 +40,7 @@ public class UsuarioTest {
     public void deve_recuperar_com_sucesso_um_usuario_criado() {
         Usuario usuario = Usuario.recuperar(1, NOME, EMAIL, DIGITOS_UNICOS_CALCULADOS);
 
-        assertEquals(Long.valueOf(1), usuario.getId());
+        assertEquals(Integer.valueOf(1), usuario.getId());
 
         assertEquals(NOME, usuario.getNome());
         assertEquals(EMAIL, usuario.getEmail());
