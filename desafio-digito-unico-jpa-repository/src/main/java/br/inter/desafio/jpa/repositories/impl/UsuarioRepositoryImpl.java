@@ -56,7 +56,7 @@ public class UsuarioRepositoryImpl implements UsuarioRepository {
     public void alterar(Integer idUsuario, String nome, String email) {
         Usuario usuario = checarSeHaUsuarioCadastradoComOIdInformado(idUsuario);
 
-        Usuario novoUsuario = Usuario.criar(nome, new Email(email));
+        Usuario novoUsuario = Usuario.recuperar(usuario.getId(), nome, new Email(email), usuario.getDigitosUnicosCalculados());
 
         usuarios.replace(idUsuario, usuario, novoUsuario);
     }
