@@ -5,6 +5,7 @@ import br.inter.desafio.application.manterusuario.commands.CadastrarUsuarioComma
 import br.inter.desafio.application.manterusuario.commands.CalcularDigitoUnicoParaUsuarioCommand;
 import br.inter.desafio.application.manterusuario.commands.DeletarUsuarioPorIdCommand;
 import br.inter.desafio.application.manterusuario.handlers.*;
+import br.inter.desafio.application.manterusuario.queries.ListarDigitosUnicosUsuarioQuery;
 import br.inter.desafio.application.manterusuario.queries.ListarUsuarioPorIdQuery;
 import br.inter.desafio.web.mvc.controllers.usuario.form.AlterarUsuarioForm;
 import br.inter.desafio.web.mvc.controllers.usuario.form.CadastrarUsuarioForm;
@@ -23,19 +24,22 @@ public class UsuarioController {
     private final DeletarUsuarioHandler deletarUsuarioHandler;
     private final AlterarUsuarioHandler alterarUsuarioHandler;
     private final CalcularDigitoUnicoParaUsuarioHandler calcularDigitoUnicoParaUsuarioHandler;
+    private final ListarDigitosUnicosUsuarioHandler listarDigitosUnicosUsuarioHandler;
 
     public UsuarioController(CadastrarUsuarioHandler cadastrarUsuarioHandler,
                              ListarUsuarioHandler listarUsuarioHandler,
                              ListarTodosUsuariosHandler listarTodosUsuariosHandler,
                              DeletarUsuarioHandler deletarUsuarioHandler,
                              AlterarUsuarioHandler alterarUsuarioHandler,
-                             CalcularDigitoUnicoParaUsuarioHandler calcularDigitoUnicoParaUsuarioHandler) {
+                             CalcularDigitoUnicoParaUsuarioHandler calcularDigitoUnicoParaUsuarioHandler,
+                             ListarDigitosUnicosUsuarioHandler listarDigitosUnicosUsuarioHandler) {
         this.cadastrarUsuarioHandler = cadastrarUsuarioHandler;
         this.listarUsuarioHandler = listarUsuarioHandler;
         this.listarTodosUsuariosHandler = listarTodosUsuariosHandler;
         this.deletarUsuarioHandler = deletarUsuarioHandler;
         this.alterarUsuarioHandler = alterarUsuarioHandler;
         this.calcularDigitoUnicoParaUsuarioHandler = calcularDigitoUnicoParaUsuarioHandler;
+        this.listarDigitosUnicosUsuarioHandler = listarDigitosUnicosUsuarioHandler;
     }
 
     @PostMapping("/cadastrar")
@@ -104,6 +108,16 @@ public class UsuarioController {
         this.calcularDigitoUnicoParaUsuarioHandler.handle(command);
 
         return ResponseEntity.ok("Dígito único calculado para o usuário.");
+    }
+
+    @GetMapping(value = "/recuperar-digitos-unicos", params = {"id-usuario"})
+    public ResponseEntity recuperarDigitosUnicosDeUsuario(@RequestParam("id-usuario") Integer idUsuario) {
+
+        ListarDigitosUnicosUsuarioQuery query = ListarDigitosUnicosUsuarioQuery.builder()
+                                                                               .idUsuario(idUsuario)
+                                                                               .build();
+
+        return ResponseEntity.ok(this.listarDigitosUnicosUsuarioHandler.handle(query));
     }
 
 }
