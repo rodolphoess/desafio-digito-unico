@@ -33,7 +33,7 @@ public class UsuarioRepositoryImpl implements UsuarioRepository {
         Usuario usuario = usuarios.get(idUsuario);
 
         if (usuario == null) {
-            throw new UsuarioNaoEncontradoException();
+            throw new UsuarioNaoEncontradoException("Não há usuário cadastrado com esse ID.");
         }
 
         return usuarioDominioParaDto(usuario, idUsuario);
