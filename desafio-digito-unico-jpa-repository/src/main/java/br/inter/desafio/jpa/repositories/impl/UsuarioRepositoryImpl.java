@@ -30,7 +30,9 @@ public class UsuarioRepositoryImpl implements UsuarioRepository {
     @Override
     public UsuarioDTO recuperar(Integer idUsuario) {
 
-        Usuario usuario = checarSeHaUsuarioCadastrado(idUsuario);
+        Usuario usuario = usuarios.get(idUsuario);
+
+        checarSeHaUsuarioCadastrado(usuario);
 
         return usuarioDominioParaDto(usuario, idUsuario);
     }
@@ -43,7 +45,9 @@ public class UsuarioRepositoryImpl implements UsuarioRepository {
     @Override
     public void deletar(Integer idUsuario) {
 
-        Usuario usuario = checarSeHaUsuarioCadastrado(idUsuario);
+        Usuario usuario = usuarios.get(idUsuario);
+
+        checarSeHaUsuarioCadastrado(usuario);
 
         usuarios.remove(idUsuario);
 
@@ -64,14 +68,10 @@ public class UsuarioRepositoryImpl implements UsuarioRepository {
         return null;
     }
 
-    private Usuario checarSeHaUsuarioCadastrado(Integer idUsuario) {
-        Usuario usuario = usuarios.get(idUsuario);
-
+    private void checarSeHaUsuarioCadastrado(Usuario usuario) {
         if (usuario == null) {
             throw new UsuarioNaoEncontradoException("Não há usuário cadastrado com esse ID.");
         }
-
-        return usuario;
     }
 
     private UsuarioDTO usuarioDominioParaDto(Usuario usuario, Integer idUsuario) {
