@@ -350,6 +350,429 @@
 				}
 			},
 			"response": []
+		},
+		{
+			"name": "Cadastrar Usuário",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json;"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"nome\": \"Usuário\",\n\t\"email\": \"teste@teste.com\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/digito-unico/usuario/cadastrar",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"digito-unico",
+						"usuario",
+						"cadastrar"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Listar Usuário",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json;"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8080/digito-unico/usuario/listar?id=1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"digito-unico",
+						"usuario",
+						"listar"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Listar Todos Usuários",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json;"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8080/digito-unico/usuario/listar-todos",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"digito-unico",
+						"usuario",
+						"listar-todos"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Listar Usuário Inexistente",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json;"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8080/digito-unico/usuario/listar?id=1000",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"digito-unico",
+						"usuario",
+						"listar"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "1000"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Alterar Usuário",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json;"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"idUsuario\": 1,\n\t\"nome\": \"Usuário Modificado\",\n\t\"email\": \"teste@teste.com\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/digito-unico/usuario/alterar",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"digito-unico",
+						"usuario",
+						"alterar"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Alterar Usuário Inexistente",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json;"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"idUsuario\": 10000,\n\t\"nome\": \"Usuário Modificado\",\n\t\"email\": \"teste@teste.com\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/digito-unico/usuario/alterar",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"digito-unico",
+						"usuario",
+						"alterar"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Calcular Dígito Único para Usuário",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json;"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"idUsuario\": 1,\n\t\"valorASerConcatenado\": \"9875\",\n\t\"numeroDeConcatenacoes\" : 4\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/digito-unico/usuario/calcular-digito-unico",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"digito-unico",
+						"usuario",
+						"calcular-digito-unico"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Calcular Dígito Único para Usuário Inexistente",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json;"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"idUsuario\": 10000,\n\t\"valorASerConcatenado\": \"9875\",\n\t\"numeroDeConcatenacoes\" : 4\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/digito-unico/usuario/calcular-digito-unico",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"digito-unico",
+						"usuario",
+						"calcular-digito-unico"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Recuperar Dígitos Únicos de um Usuário",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json;"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8080/digito-unico/usuario/recuperar-digitos-unicos?id-usuario=1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"digito-unico",
+						"usuario",
+						"recuperar-digitos-unicos"
+					],
+					"query": [
+						{
+							"key": "id-usuario",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Recuperar Dígitos Únicos de um Usuário Inexistente",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json;"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8080/digito-unico/usuario/recuperar-digitos-unicos?id-usuario=10000",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"digito-unico",
+						"usuario",
+						"recuperar-digitos-unicos"
+					],
+					"query": [
+						{
+							"key": "id-usuario",
+							"value": "10000"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Deletar Usuário",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json;"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8080/digito-unico/usuario/deletar?id=1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"digito-unico",
+						"usuario",
+						"deletar"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Deletar Usuário Inexistente",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json;"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8080/digito-unico/usuario/deletar?id=10000",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"digito-unico",
+						"usuario",
+						"deletar"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "10000"
+						}
+					]
+				}
+			},
+			"response": []
 		}
 	],
 	"protocolProfileBehavior": {}
