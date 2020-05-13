@@ -38,9 +38,9 @@ public class UsuarioTest {
 
     @Test
     public void deve_recuperar_com_sucesso_um_usuario_criado() {
-        Usuario usuario = Usuario.recuperar(1L, NOME, EMAIL, DIGITOS_UNICOS_CALCULADOS);
+        Usuario usuario = Usuario.recuperar(1, NOME, EMAIL, DIGITOS_UNICOS_CALCULADOS);
 
-        assertEquals(Long.valueOf(1L), usuario.getId());
+        assertEquals(Long.valueOf(1), usuario.getId());
 
         assertEquals(NOME, usuario.getNome());
         assertEquals(EMAIL, usuario.getEmail());
@@ -87,7 +87,7 @@ public class UsuarioTest {
 
     @Test
     public void deve_garantir_que_um_objeto_com_digito_unico_calculado_retorne_seu_estado_corretamente_enquanto_string() {
-        Usuario usuario = Usuario.recuperar(1L, NOME, EMAIL, DIGITOS_UNICOS_CALCULADOS);
+        Usuario usuario = Usuario.recuperar(1, NOME, EMAIL, DIGITOS_UNICOS_CALCULADOS);
 
         assertEquals("Usuario[nome=Nome Usuário,email=email@teste.com,digitosUnicosCalculados=[DigitoUnico[valorASerConcatenado=9875,numeroDeConcatenacoes=4,valorDigitoUnico=116,id=<null>]],id=1]",
                 usuario.toString());
@@ -95,50 +95,50 @@ public class UsuarioTest {
 
     @Test
     public void deve_garantir_que_dois_objetos_sao_iguais_quando_retornam_o_mesmo_id() {
-        Usuario usuario1 = Usuario.recuperar(1L, NOME, EMAIL, DIGITOS_UNICOS_CALCULADOS);
+        Usuario usuario1 = Usuario.recuperar(1, NOME, EMAIL, DIGITOS_UNICOS_CALCULADOS);
 
-        Usuario usuario2 = Usuario.recuperar(1L, NOME, EMAIL, DIGITOS_UNICOS_CALCULADOS);
+        Usuario usuario2 = Usuario.recuperar(1, NOME, EMAIL, DIGITOS_UNICOS_CALCULADOS);
 
         assertEquals(usuario1, usuario2);
     }
 
     @Test
     public void deve_garantir_que_dois_objetos_sao_diferentes_quando_possuem_ids_diferentes() {
-        Usuario usuario1 = Usuario.recuperar(1L, NOME, EMAIL, DIGITOS_UNICOS_CALCULADOS);
+        Usuario usuario1 = Usuario.recuperar(1, NOME, EMAIL, DIGITOS_UNICOS_CALCULADOS);
 
-        Usuario usuario2 = Usuario.recuperar(2L, NOME, EMAIL, DIGITOS_UNICOS_CALCULADOS);
+        Usuario usuario2 = Usuario.recuperar(2, NOME, EMAIL, DIGITOS_UNICOS_CALCULADOS);
 
         assertNotEquals(usuario1, usuario2);
     }
 
     @Test
     public void deve_garantir_identificar_que_dois_objetos_sao_de_tipos_diferentes() {
-        Usuario usuario = Usuario.recuperar(1L, NOME, EMAIL, DIGITOS_UNICOS_CALCULADOS);
+        Usuario usuario = Usuario.recuperar(1, NOME, EMAIL, DIGITOS_UNICOS_CALCULADOS);
 
         assertNotEquals(usuario, "");
     }
 
     @Test
     public void deve_garantir_que_dois_objetos_sao_diferentes_quando_um_deles_for_nulo() {
-        Usuario usuario = Usuario.recuperar(1L, NOME, EMAIL, DIGITOS_UNICOS_CALCULADOS);
+        Usuario usuario = Usuario.recuperar(1, NOME, EMAIL, DIGITOS_UNICOS_CALCULADOS);
 
         assertNotEquals(usuario, null);
     }
 
     @Test
     public void deve_garantir_que_ao_passar_dois_objetos_iguais_retorne_o_mesmo_hashcode() {
-        Usuario usuario1 = Usuario.recuperar(1L, NOME, EMAIL, DIGITOS_UNICOS_CALCULADOS);
+        Usuario usuario1 = Usuario.recuperar(1, NOME, EMAIL, DIGITOS_UNICOS_CALCULADOS);
 
-        Usuario usuario2 = Usuario.recuperar(1L, NOME, EMAIL, DIGITOS_UNICOS_CALCULADOS);
+        Usuario usuario2 = Usuario.recuperar(1, NOME, EMAIL, DIGITOS_UNICOS_CALCULADOS);
 
         assertEquals(usuario1.hashCode(), usuario2.hashCode());
     }
 
     @Test
     public void deve_garantir_que_ao_passar_dois_objetos_diferentes_retorne_hashcodes_diferentes() {
-        Usuario usuario1 = Usuario.recuperar(1L, NOME, EMAIL, DIGITOS_UNICOS_CALCULADOS);
+        Usuario usuario1 = Usuario.recuperar(1, NOME, EMAIL, DIGITOS_UNICOS_CALCULADOS);
 
-        Usuario usuario2 = Usuario.recuperar(2L, NOME, EMAIL, DIGITOS_UNICOS_CALCULADOS);
+        Usuario usuario2 = Usuario.recuperar(2, NOME, EMAIL, DIGITOS_UNICOS_CALCULADOS);
 
         assertNotEquals(usuario1.hashCode(), usuario2.hashCode());
     }

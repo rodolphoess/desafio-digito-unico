@@ -28,18 +28,13 @@ public class UsuarioRepositoryImpl implements UsuarioRepository {
     }
 
     @Override
-    public UsuarioDTO recuperar(Integer idUsuario) {
+    public UsuarioDTO listar(Integer idUsuario) {
 
         Usuario usuario = usuarios.get(idUsuario);
 
-        checarSeHaUsuarioCadastrado(usuario);
+        lancarBloqueioSeNaoHouverUsuarioCadastrado(usuario);
 
         return usuarioDominioParaDto(usuario, idUsuario);
-    }
-
-    @Override
-    public List<UsuarioDTO> listarTodosOsUsuarios() {
-        return null;
     }
 
     @Override
@@ -47,10 +42,9 @@ public class UsuarioRepositoryImpl implements UsuarioRepository {
 
         Usuario usuario = usuarios.get(idUsuario);
 
-        checarSeHaUsuarioCadastrado(usuario);
+        lancarBloqueioSeNaoHouverUsuarioCadastrado(usuario);
 
         usuarios.remove(idUsuario);
-
     }
 
     @Override
@@ -61,6 +55,13 @@ public class UsuarioRepositoryImpl implements UsuarioRepository {
     @Override
     public void calcularDigitoUnicoParaUsuario(Integer idUsuario, String valorASerConcatenado, int numeroDeConcatenacoes) {
 
+        Usuario usuario = usuarios.get(idUsuario);
+
+        lancarBloqueioSeNaoHouverUsuarioCadastrado(usuario);
+
+        usuario.calcularDigitoUnicoParaUsuario(valorASerConcatenado, numeroDeConcatenacoes);
+
+        usuarios.replace(idUsuario, usuario);
     }
 
     @Override
@@ -68,7 +69,7 @@ public class UsuarioRepositoryImpl implements UsuarioRepository {
         return null;
     }
 
-    private void checarSeHaUsuarioCadastrado(Usuario usuario) {
+    private void lancarBloqueioSeNaoHouverUsuarioCadastrado(Usuario usuario) {
         if (usuario == null) {
             throw new UsuarioNaoEncontradoException("Não há usuário cadastrado com esse ID.");
         }

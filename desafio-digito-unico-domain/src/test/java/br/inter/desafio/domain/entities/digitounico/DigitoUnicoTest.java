@@ -102,7 +102,7 @@ public class DigitoUnicoTest {
 
     @Test
     public void deve_garantir_que_um_objeto_com_digito_unico_calculado_retorne_seu_estado_corretamente_enquanto_string() {
-        DigitoUnico digitoUnico = DigitoUnico.recuperarDigitoUnicoCalculado(1L, VALOR_A_SER_CONCATENADO, NUMERO_CONCATENACOES,
+        DigitoUnico digitoUnico = DigitoUnico.recuperarDigitoUnicoCalculado(1, VALOR_A_SER_CONCATENADO, NUMERO_CONCATENACOES,
                                                                         VALOR_DIGITO_UNICO);
 
         assertEquals("DigitoUnico[valorASerConcatenado=9875,numeroDeConcatenacoes=4,valorDigitoUnico=116,id=1]",
@@ -111,10 +111,10 @@ public class DigitoUnicoTest {
 
     @Test
     public void deve_garantir_que_dois_objetos_sao_iguais_quando_retornam_o_mesmo_id() {
-        DigitoUnico digitoUnico1 = DigitoUnico.recuperarDigitoUnicoCalculado(1L, VALOR_A_SER_CONCATENADO, NUMERO_CONCATENACOES,
+        DigitoUnico digitoUnico1 = DigitoUnico.recuperarDigitoUnicoCalculado(1, VALOR_A_SER_CONCATENADO, NUMERO_CONCATENACOES,
                                                                          VALOR_DIGITO_UNICO);
 
-        DigitoUnico digitoUnico2 = DigitoUnico.recuperarDigitoUnicoCalculado(1L, VALOR_A_SER_CONCATENADO, NUMERO_CONCATENACOES,
+        DigitoUnico digitoUnico2 = DigitoUnico.recuperarDigitoUnicoCalculado(1, VALOR_A_SER_CONCATENADO, NUMERO_CONCATENACOES,
                                                                         VALOR_DIGITO_UNICO);
 
         assertEquals(digitoUnico1, digitoUnico2);
@@ -122,10 +122,10 @@ public class DigitoUnicoTest {
 
     @Test
     public void deve_garantir_que_dois_objetos_sao_diferentes_quando_possuem_ids_diferentes() {
-        DigitoUnico digitoUnico1 = DigitoUnico.recuperarDigitoUnicoCalculado(1L, VALOR_A_SER_CONCATENADO, NUMERO_CONCATENACOES,
+        DigitoUnico digitoUnico1 = DigitoUnico.recuperarDigitoUnicoCalculado(1, VALOR_A_SER_CONCATENADO, NUMERO_CONCATENACOES,
                 VALOR_DIGITO_UNICO);
 
-        DigitoUnico digitoUnico2 = DigitoUnico.recuperarDigitoUnicoCalculado(2L, VALOR_A_SER_CONCATENADO, NUMERO_CONCATENACOES,
+        DigitoUnico digitoUnico2 = DigitoUnico.recuperarDigitoUnicoCalculado(2, VALOR_A_SER_CONCATENADO, NUMERO_CONCATENACOES,
                 VALOR_DIGITO_UNICO);
 
         assertNotEquals(digitoUnico1, digitoUnico2);
@@ -133,7 +133,7 @@ public class DigitoUnicoTest {
 
     @Test
     public void deve_garantir_identificar_que_dois_objetos_sao_de_tipos_diferentes() {
-        DigitoUnico digitoUnico = DigitoUnico.recuperarDigitoUnicoCalculado(1L, VALOR_A_SER_CONCATENADO, NUMERO_CONCATENACOES,
+        DigitoUnico digitoUnico = DigitoUnico.recuperarDigitoUnicoCalculado(1, VALOR_A_SER_CONCATENADO, NUMERO_CONCATENACOES,
                 VALOR_DIGITO_UNICO);
 
         assertNotEquals(digitoUnico, "");
@@ -141,7 +141,7 @@ public class DigitoUnicoTest {
 
     @Test
     public void deve_garantir_que_dois_objetos_sao_diferentes_quando_um_deles_for_nulo() {
-        DigitoUnico digitoUnico = DigitoUnico.recuperarDigitoUnicoCalculado(1L, VALOR_A_SER_CONCATENADO, NUMERO_CONCATENACOES,
+        DigitoUnico digitoUnico = DigitoUnico.recuperarDigitoUnicoCalculado(1, VALOR_A_SER_CONCATENADO, NUMERO_CONCATENACOES,
                 VALOR_DIGITO_UNICO);
 
         assertNotEquals(digitoUnico, null);
@@ -149,10 +149,10 @@ public class DigitoUnicoTest {
 
     @Test
     public void deve_garantir_que_ao_passar_dois_objetos_iguais_retorne_o_mesmo_hashcode() {
-        DigitoUnico digitoUnico1 = DigitoUnico.recuperarDigitoUnicoCalculado(1L, VALOR_A_SER_CONCATENADO, NUMERO_CONCATENACOES,
+        DigitoUnico digitoUnico1 = DigitoUnico.recuperarDigitoUnicoCalculado(1, VALOR_A_SER_CONCATENADO, NUMERO_CONCATENACOES,
                 VALOR_DIGITO_UNICO);
 
-        DigitoUnico digitoUnico2 = DigitoUnico.recuperarDigitoUnicoCalculado(1L, VALOR_A_SER_CONCATENADO, NUMERO_CONCATENACOES,
+        DigitoUnico digitoUnico2 = DigitoUnico.recuperarDigitoUnicoCalculado(1, VALOR_A_SER_CONCATENADO, NUMERO_CONCATENACOES,
                 VALOR_DIGITO_UNICO);
 
         assertEquals(digitoUnico1.hashCode(), digitoUnico2.hashCode());
@@ -160,10 +160,10 @@ public class DigitoUnicoTest {
 
     @Test
     public void deve_garantir_que_ao_passar_dois_objetos_diferentes_retorne_hashcodes_diferentes() {
-        DigitoUnico digitoUnico1 = DigitoUnico.recuperarDigitoUnicoCalculado(1L, VALOR_A_SER_CONCATENADO, NUMERO_CONCATENACOES,
+        DigitoUnico digitoUnico1 = DigitoUnico.recuperarDigitoUnicoCalculado(1, VALOR_A_SER_CONCATENADO, NUMERO_CONCATENACOES,
                 VALOR_DIGITO_UNICO);
 
-        DigitoUnico digitoUnico2 = DigitoUnico.recuperarDigitoUnicoCalculado(2L, VALOR_A_SER_CONCATENADO, NUMERO_CONCATENACOES,
+        DigitoUnico digitoUnico2 = DigitoUnico.recuperarDigitoUnicoCalculado(2, VALOR_A_SER_CONCATENADO, NUMERO_CONCATENACOES,
                 VALOR_DIGITO_UNICO);
 
         assertNotEquals(digitoUnico1.hashCode(), digitoUnico2.hashCode());

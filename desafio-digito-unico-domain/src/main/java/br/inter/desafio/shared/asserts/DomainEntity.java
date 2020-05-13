@@ -2,15 +2,15 @@ package br.inter.desafio.shared.asserts;
 
 public class DomainEntity extends AssertionConcern {
 
-    private Long id;
+    private Integer id;
 
     protected DomainEntity() { }
 
-    public Long getId() {
+    public Integer getId() {
         return this.id;
     }
 
-    protected void setId(Long id) {
+    protected void setId(Integer id) {
         this.id = id;
     }
 

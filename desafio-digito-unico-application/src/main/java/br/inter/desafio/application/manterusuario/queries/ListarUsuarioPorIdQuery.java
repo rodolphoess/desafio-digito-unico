@@ -6,11 +6,11 @@ import lombok.Getter;
 
 @Getter
 @Builder
-public class RecuperarUsuarioPorIdQuery extends AssertionConcern {
+public class ListarUsuarioPorIdQuery extends AssertionConcern {
 
     private Integer idUsuario;
 
-    public RecuperarUsuarioPorIdQuery(Integer idUsuario) {
+    public ListarUsuarioPorIdQuery(Integer idUsuario) {
         this.assertArgumentNotZero(idUsuario, "É necessário informar o ID do usuário.");
 
         this.idUsuario = idUsuario;

@@ -26,7 +26,7 @@ public class Usuario extends DomainEntity {
         this.email = email;
     }
 
-    private Usuario(Long id, String nome, Email email, List<DigitoUnico> digitosUnicosCalculados) {
+    private Usuario(Integer id, String nome, Email email, List<DigitoUnico> digitosUnicosCalculados) {
         setId(id);
 
         this.nome = nome;
@@ -38,7 +38,7 @@ public class Usuario extends DomainEntity {
         return new Usuario(nome, email);
     }
 
-    public static Usuario recuperar(Long id, String nome, Email email, List<DigitoUnico> digitosUnicosCalculados) {
+    public static Usuario recuperar(Integer id, String nome, Email email, List<DigitoUnico> digitosUnicosCalculados) {
         return new Usuario(id, nome, email, digitosUnicosCalculados);
     }
 
