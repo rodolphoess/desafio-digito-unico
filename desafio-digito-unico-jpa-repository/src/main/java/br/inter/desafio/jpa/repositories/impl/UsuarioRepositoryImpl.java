@@ -6,7 +6,6 @@ import br.inter.desafio.domain.entities.usuario.UsuarioNaoEncontradoException;
 import br.inter.desafio.domain.entities.usuario.UsuarioRepository;
 import br.inter.desafio.domain.readmodel.usuario.UsuarioDTO;
 import br.inter.desafio.shared.value.Email;
-import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -17,14 +16,15 @@ import static com.google.common.collect.Maps.newHashMap;
 import static java.util.stream.Collectors.toList;
 
 @Repository
-@AllArgsConstructor
 public class UsuarioRepositoryImpl implements UsuarioRepository {
 
     private final Map<Integer, Usuario> usuarios = newHashMap();
 
+    private Integer idUsuario = 1;
+
     @Override
     public void salvar(Usuario usuario) {
-        usuario.setId(usuarios.size() + 1);
+        usuario.setId(idUsuario++);
 
         usuarios.put(usuario.getId(), usuario);
     }
