@@ -1,7 +1,8 @@
 package br.inter.desafio.domain.entities.usuario;
 
-import br.inter.desafio.domain.readmodel.digitounico.DigitoUnicoDTO;
 import br.inter.desafio.domain.readmodel.usuario.UsuarioDTO;
+
+import java.util.List;
 
 public interface UsuarioRepository {
 
@@ -15,6 +16,6 @@ public interface UsuarioRepository {
 
     void calcularDigitoUnicoParaUsuario(Integer idUsuario, String valorASerConcatenado, int numeroDeConcatenacoes);
 
-    DigitoUnicoDTO recuperarCalculosDeDigitoUnicoDeUmUsuario(Integer idUsuario);
+    List<UsuarioDTO.DigitoUnico> recuperarCalculosDeDigitoUnicoDeUmUsuario(Integer idUsuario);
 
 }

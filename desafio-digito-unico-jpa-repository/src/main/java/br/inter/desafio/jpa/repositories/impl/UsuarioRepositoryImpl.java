@@ -4,8 +4,8 @@ import br.inter.desafio.domain.entities.digitounico.DigitoUnico;
 import br.inter.desafio.domain.entities.usuario.Usuario;
 import br.inter.desafio.domain.entities.usuario.UsuarioNaoEncontradoException;
 import br.inter.desafio.domain.entities.usuario.UsuarioRepository;
-import br.inter.desafio.domain.readmodel.digitounico.DigitoUnicoDTO;
 import br.inter.desafio.domain.readmodel.usuario.UsuarioDTO;
+import br.inter.desafio.shared.value.Email;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Repository;
 
@@ -50,6 +50,13 @@ public class UsuarioRepositoryImpl implements UsuarioRepository {
     @Override
     public void alterar(Integer idUsuario, String nome, String email) {
 
+        Usuario usuario = usuarios.get(idUsuario);
+
+        lancarBloqueioSeNaoHouverUsuarioCadastrado(usuario);
+
+        Usuario novoUsuario = Usuario.criar(nome, new Email(email));
+
+        usuarios.replace(idUsuario, usuario, novoUsuario);
     }
 
     @Override
@@ -65,8 +72,15 @@ public class UsuarioRepositoryImpl implements UsuarioRepository {
     }
 
     @Override
-    public DigitoUnicoDTO recuperarCalculosDeDigitoUnicoDeUmUsuario(Integer idUsuario) {
-        return null;
+    public List<UsuarioDTO.DigitoUnico> recuperarCalculosDeDigitoUnicoDeUmUsuario(Integer idUsuario) {
+
+        Usuario usuario = usuarios.get(idUsuario);
+
+        lancarBloqueioSeNaoHouverUsuarioCadastrado(usuario);
+
+        return usuario.getDigitosUnicosCalculados().stream()
+                                                   .map(this::instanciarCalculoDigitoUnico)
+                                                   .collect(toList());
     }
 
     private void lancarBloqueioSeNaoHouverUsuarioCadastrado(Usuario usuario) {
