@@ -7,5 +7,7 @@ import lombok.Setter;
 @Setter
 public class CadastrarUsuarioForm {
 
+    private String nome;
+    private String email;
 
 }
