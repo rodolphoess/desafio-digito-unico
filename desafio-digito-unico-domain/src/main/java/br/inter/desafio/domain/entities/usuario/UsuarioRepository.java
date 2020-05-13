@@ -10,6 +10,8 @@ public interface UsuarioRepository {
 
     UsuarioDTO listar(Integer idUsuario);
 
+    List<UsuarioDTO> listarTodos();
+
     void deletar(Integer idUsuario);
 
     void alterar(Integer idUsuario, String nome, String email);

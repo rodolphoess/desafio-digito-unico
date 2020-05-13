@@ -12,6 +12,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 import java.util.Map;
 
+import static com.google.common.collect.Lists.newArrayList;
 import static com.google.common.collect.Maps.newHashMap;
 import static java.util.stream.Collectors.toList;
 
@@ -23,14 +24,25 @@ public class UsuarioRepositoryImpl implements UsuarioRepository {
 
     @Override
     public void salvar(Usuario usuario) {
-        usuarios.put(usuarios.size() + 1, usuario);
+        usuario.setId(usuarios.size() + 1);
+
+        usuarios.put(usuario.getId(), usuario);
     }
 
     @Override
     public UsuarioDTO listar(Integer idUsuario) {
         Usuario usuario = checarSeHaUsuarioCadastradoComOIdInformado(idUsuario);
 
-        return usuarioDominioParaDTO(usuario, idUsuario);
+        return usuarioDominioParaDTO(usuario);
+    }
+
+    @Override
+    public List<UsuarioDTO> listarTodos() {
+        List<Usuario> listaUsuarios = newArrayList();
+
+        listaUsuarios.addAll(usuarios.values());
+
+        return listaUsuarios.stream().map(this::usuarioDominioParaDTO).collect(toList());
     }
 
     @Override
@@ -81,8 +93,8 @@ public class UsuarioRepositoryImpl implements UsuarioRepository {
         }
     }
 
-    private UsuarioDTO usuarioDominioParaDTO(Usuario usuario, Integer idUsuario) {
-        return new UsuarioDTO(idUsuario,
+    private UsuarioDTO usuarioDominioParaDTO(Usuario usuario) {
+        return new UsuarioDTO(usuario.getId(),
                               usuario.getNome(),
                               usuario.getEmail().getEmailFornecido(),
                               instanciarCalculosDigitosUnicos(usuario.getDigitosUnicosCalculados())
