@@ -8,7 +8,9 @@ utilizada a arquitetura hexagonal.
 1. Assim feito, você precisará executar e abrir a IDE, para isso precisará de uma conta na JetBrains. Caso não tenha, poderá fazer o cadastro
 nesse link https://account.jetbrains.com/login;
 1. Com a IDE baixada e o login feito após executá-la, deverá aparecer uma janela parecida com essa;
-![Abertura de projetos](/desafio-digito-unico-web-mvc/src/main/resources/static/img/foto_temporaria.jpg)
+
+<div style="text-align: center"><img alt="Abertura de projetos." src="desafio-digito-unico-web-mvc/src/main/resources/static/img/foto_temporaria.jpg"/></div>
+
 (MOSTRAR IMAGEM DA ABERTURA DE PROJETOS)
 
 ## **2. Como executar os testes unitários?**
