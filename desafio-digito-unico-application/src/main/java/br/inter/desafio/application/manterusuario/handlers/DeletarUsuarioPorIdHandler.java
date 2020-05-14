@@ -7,11 +7,11 @@ import org.springframework.stereotype.Service;
 import static java.util.Objects.requireNonNull;
 
 @Service
-public class DeletarUsuarioHandler {
+public class DeletarUsuarioPorIdHandler {
 
     private final UsuarioRepository usuarioRepository;
 
-    public DeletarUsuarioHandler(UsuarioRepository usuarioRepository) {
+    public DeletarUsuarioPorIdHandler(UsuarioRepository usuarioRepository) {
         this.usuarioRepository = usuarioRepository;
     }
 

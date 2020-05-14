@@ -8,11 +8,11 @@ import org.springframework.stereotype.Service;
 import static java.util.Objects.requireNonNull;
 
 @Service
-public class ListarUsuarioHandler {
+public class ListarUsuarioPorIdHandler {
 
     private final UsuarioRepository usuarioRepository;
 
-    public ListarUsuarioHandler(UsuarioRepository usuarioRepository) {
+    public ListarUsuarioPorIdHandler(UsuarioRepository usuarioRepository) {
         this.usuarioRepository = usuarioRepository;
     }
 

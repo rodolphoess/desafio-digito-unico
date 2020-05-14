@@ -9,7 +9,7 @@ import java.util.List;
 @Service
 public class ListarTodosUsuariosHandler {
 
-    private UsuarioRepository usuarioRepository;
+    private final UsuarioRepository usuarioRepository;
 
     public ListarTodosUsuariosHandler(UsuarioRepository usuarioRepository) {
         this.usuarioRepository = usuarioRepository;

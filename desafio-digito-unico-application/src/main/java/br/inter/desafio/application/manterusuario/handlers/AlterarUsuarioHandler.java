@@ -9,7 +9,7 @@ import static java.util.Objects.requireNonNull;
 @Service
 public class AlterarUsuarioHandler {
 
-    private UsuarioRepository usuarioRepository;
+    private final UsuarioRepository usuarioRepository;
 
     public AlterarUsuarioHandler(UsuarioRepository usuarioRepository) {
         this.usuarioRepository = usuarioRepository;

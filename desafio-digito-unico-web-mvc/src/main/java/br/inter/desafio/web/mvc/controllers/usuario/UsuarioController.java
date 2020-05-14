@@ -19,24 +19,24 @@ import org.springframework.web.bind.annotation.*;
 public class UsuarioController {
 
     private final CadastrarUsuarioHandler cadastrarUsuarioHandler;
-    private final ListarUsuarioHandler listarUsuarioHandler;
+    private final ListarUsuarioPorIdHandler listarUsuarioPorIdHandler;
     private final ListarTodosUsuariosHandler listarTodosUsuariosHandler;
-    private final DeletarUsuarioHandler deletarUsuarioHandler;
+    private final DeletarUsuarioPorIdHandler deletarUsuarioPorIdHandler;
     private final AlterarUsuarioHandler alterarUsuarioHandler;
     private final CalcularDigitoUnicoParaUsuarioHandler calcularDigitoUnicoParaUsuarioHandler;
     private final ListarDigitosUnicosUsuarioHandler listarDigitosUnicosUsuarioHandler;
 
     public UsuarioController(CadastrarUsuarioHandler cadastrarUsuarioHandler,
-                             ListarUsuarioHandler listarUsuarioHandler,
+                             ListarUsuarioPorIdHandler listarUsuarioPorIdHandler,
                              ListarTodosUsuariosHandler listarTodosUsuariosHandler,
-                             DeletarUsuarioHandler deletarUsuarioHandler,
+                             DeletarUsuarioPorIdHandler deletarUsuarioPorIdHandler,
                              AlterarUsuarioHandler alterarUsuarioHandler,
                              CalcularDigitoUnicoParaUsuarioHandler calcularDigitoUnicoParaUsuarioHandler,
                              ListarDigitosUnicosUsuarioHandler listarDigitosUnicosUsuarioHandler) {
         this.cadastrarUsuarioHandler = cadastrarUsuarioHandler;
-        this.listarUsuarioHandler = listarUsuarioHandler;
+        this.listarUsuarioPorIdHandler = listarUsuarioPorIdHandler;
         this.listarTodosUsuariosHandler = listarTodosUsuariosHandler;
-        this.deletarUsuarioHandler = deletarUsuarioHandler;
+        this.deletarUsuarioPorIdHandler = deletarUsuarioPorIdHandler;
         this.alterarUsuarioHandler = alterarUsuarioHandler;
         this.calcularDigitoUnicoParaUsuarioHandler = calcularDigitoUnicoParaUsuarioHandler;
         this.listarDigitosUnicosUsuarioHandler = listarDigitosUnicosUsuarioHandler;
@@ -62,7 +62,7 @@ public class UsuarioController {
                                                                      .idUsuario(idUsuario)
                                                                      .build();
 
-        return ResponseEntity.ok(this.listarUsuarioHandler.handle(query));
+        return ResponseEntity.ok(this.listarUsuarioPorIdHandler.handle(query));
     }
 
     @GetMapping("/listar-todos")
@@ -77,7 +77,7 @@ public class UsuarioController {
                                                                        .idUsuario(idUsuario)
                                                                        .build();
 
-        this.deletarUsuarioHandler.handle(command);
+        this.deletarUsuarioPorIdHandler.handle(command);
 
         return ResponseEntity.ok("Usuário deletado com sucesso.");
     }

@@ -12,7 +12,7 @@ import static java.util.Objects.requireNonNull;
 @Service
 public class ListarDigitosUnicosUsuarioHandler {
 
-    private UsuarioRepository usuarioRepository;
+    private final UsuarioRepository usuarioRepository;
 
     public ListarDigitosUnicosUsuarioHandler(UsuarioRepository usuarioRepository) {
         this.usuarioRepository = usuarioRepository;

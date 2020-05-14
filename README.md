@@ -123,6 +123,7 @@ Espero que gostem ou tenham gostado da forma como estruturei o projeto, das solu
 um #sanguelaranja é grande. Sinto que trabalhando e evoluindo com vocês estarei feliz e realizado. 
 
 Pelo constante e rápido crescimento sei que vocês possuem muitos desafios, e estou pronto para abraçá-los, trabalhar e evoluir junto 
-com todo o time para ajudá-los a desenvolver as melhores soluções. Obrigado, espero poder trabalhar no Banco Inter e conhecê-los em breve!
+com todo o time para ajudá-los a desenvolver as melhores soluções. Obrigado, espero poder fazer parte do time Banco Inter, adquirir #sanguelaranja 
+e conhecê-los em breve!
 
 Forte abraço!
