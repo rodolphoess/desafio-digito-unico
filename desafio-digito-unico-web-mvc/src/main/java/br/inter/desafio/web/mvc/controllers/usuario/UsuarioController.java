@@ -11,6 +11,7 @@ import br.inter.desafio.domain.entities.usuario.UsuarioNaoEncontradoException;
 import br.inter.desafio.web.mvc.controllers.usuario.form.AlterarUsuarioForm;
 import br.inter.desafio.web.mvc.controllers.usuario.form.CadastrarUsuarioForm;
 import br.inter.desafio.web.mvc.controllers.usuario.form.CalcularDigitoUnicoParaUsuarioForm;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -45,6 +46,7 @@ public class UsuarioController {
     }
 
     @PostMapping("/cadastrar")
+    @ApiOperation(value = "Realiza o cadastramento de um usuário.")
     public ResponseEntity cadastrar(@RequestBody CadastrarUsuarioForm form) {
 
         CadastrarUsuarioCommand command = CadastrarUsuarioCommand.builder()
@@ -58,6 +60,7 @@ public class UsuarioController {
     }
 
     @GetMapping(value = "/listar", params = {"id"})
+    @ApiOperation(value = "Lista um usuário específico de acordo com o ID passado.")
     public ResponseEntity listar(@RequestParam("id") Integer idUsuario) {
 
         ListarUsuarioPorIdQuery query = ListarUsuarioPorIdQuery.builder()
@@ -68,11 +71,13 @@ public class UsuarioController {
     }
 
     @GetMapping("/listar-todos")
+    @ApiOperation(value = "Lista todos os usuários cadastrados.")
     public ResponseEntity listarTodos() {
         return ResponseEntity.ok(this.listarTodosUsuariosHandler.handle());
     }
 
     @DeleteMapping(value = "/deletar", params = {"id"})
+    @ApiOperation(value = "Deleta um usuário específico.")
     public ResponseEntity deletar(@RequestParam("id") Integer idUsuario) {
 
         DeletarUsuarioPorIdCommand command = DeletarUsuarioPorIdCommand.builder()
@@ -85,6 +90,7 @@ public class UsuarioController {
     }
 
     @PutMapping("/alterar")
+    @ApiOperation(value = "Altera um usuário específico de acordo com o ID passado.")
     public ResponseEntity alterar(@RequestBody AlterarUsuarioForm form) {
 
         AlterarUsuarioCommand command = AlterarUsuarioCommand.builder()
@@ -99,6 +105,7 @@ public class UsuarioController {
     }
 
     @PostMapping(value = "/calcular-digito-unico")
+    @ApiOperation(value = "Calcula o dígito único para um usuário específico de acordo com o ID dele.")
     public ResponseEntity calcularDigitoUnicoParaUsuario(@RequestBody CalcularDigitoUnicoParaUsuarioForm form) {
 
         CalcularDigitoUnicoParaUsuarioCommand command = CalcularDigitoUnicoParaUsuarioCommand.builder()
@@ -113,6 +120,7 @@ public class UsuarioController {
     }
 
     @GetMapping(value = "/recuperar-digitos-unicos", params = {"id-usuario"})
+    @ApiOperation(value = "Recupera todos os dígitos únicos calculados de um usuário de acordo com o ID.")
     public ResponseEntity recuperarDigitosUnicosDeUsuario(@RequestParam("id-usuario") Integer idUsuario) {
 
         ListarDigitosUnicosUsuarioQuery query = ListarDigitosUnicosUsuarioQuery.builder()
