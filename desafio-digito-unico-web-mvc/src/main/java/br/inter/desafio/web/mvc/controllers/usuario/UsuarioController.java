@@ -7,9 +7,11 @@ import br.inter.desafio.application.manterusuario.commands.DeletarUsuarioPorIdCo
 import br.inter.desafio.application.manterusuario.handlers.*;
 import br.inter.desafio.application.manterusuario.queries.ListarDigitosUnicosUsuarioQuery;
 import br.inter.desafio.application.manterusuario.queries.ListarUsuarioPorIdQuery;
+import br.inter.desafio.domain.entities.usuario.UsuarioNaoEncontradoException;
 import br.inter.desafio.web.mvc.controllers.usuario.form.AlterarUsuarioForm;
 import br.inter.desafio.web.mvc.controllers.usuario.form.CadastrarUsuarioForm;
 import br.inter.desafio.web.mvc.controllers.usuario.form.CalcularDigitoUnicoParaUsuarioForm;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -119,5 +121,9 @@ public class UsuarioController {
 
         return ResponseEntity.ok(this.listarDigitosUnicosUsuarioHandler.handle(query));
     }
+
+    @ResponseStatus(value = HttpStatus.NOT_FOUND, reason = "Não há usuário cadastrado com esse ID.")
+    @ExceptionHandler(UsuarioNaoEncontradoException.class)
+    public void usuarioNaoEncontradoException() { /* Método para tratamento de exceção. */ }
 
 }

@@ -89,7 +89,7 @@ public class UsuarioRepositoryImpl implements UsuarioRepository {
 
     private void lancarBloqueioSeNaoHouverUsuarioCadastrado(Usuario usuario) {
         if (usuario == null) {
-            throw new UsuarioNaoEncontradoException("Não há usuário cadastrado com esse ID.");
+            throw new UsuarioNaoEncontradoException();
         }
     }
 
