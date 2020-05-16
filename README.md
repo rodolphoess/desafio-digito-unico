@@ -72,6 +72,8 @@ Digitado o comando, aperte Enter. Todas as dependências do projeto serão baixa
 7. Após o Maven baixar todas as dependências especificadas nos arquivos pom.xml de cada módulo e ter executado todos os testes, 
 a aplicação estará pronta para ser inicializada. É possível abri-la no browser através do path http://localhost:8080/digito-unico/
 
+8. Após inicializar a aplicação é possível acessar a documentação com Swagger através do link http://localhost:8080/digito-unico/swagger-ui.html
+
 
 ## **2. Como executar os testes unitários?**
 
